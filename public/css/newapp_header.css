@@ -1,0 +1,219 @@
+@font-face{
+font-family: Whitney-Medium; 
+font-display: auto;
+src: local('Whitney-Medium'), url("fonts/Whitney-Medium.ttf");
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, p, .row, span, b, .row p, li, ul, a, div,input[type="text"],input[type="number"],input[type="password"],input[type="email"]{font-family: Whitney-Medium;}
+.nopad {
+padding: 0 !important;
+}
+.open>.mosttop {
+	left: -130px;
+    top: 25px;
+	min-width: 185px;
+}
+.open>.line {
+	top: 25px;
+    left: -25px;
+}
+.green{
+	color:#23ea23;
+}
+.red{
+	color:red;
+}
+.mosttop::after {
+    border-bottom: 8px solid #FFFFFF;
+    border-left: 9px solid rgba(0, 0, 0, 0);
+    border-right: 9px solid rgba(0, 0, 0, 0);
+    content: "";
+    display: inline-block;
+    left: 75%;
+    position: absolute;
+    top: -7px;
+}
+.tab5ico{
+	height: 35px;
+	border-radius: 3px;
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(0%, -50%);
+	box-shadow: #000 0px 4px 10px -6px;
+	background-image: linear-gradient(to right, #504BC3 , #9853B0 80%)
+}
+.tab5txt{
+	margin: 0;
+	width:75%;
+    padding: 10px 0px 0 10px;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-33%, -50%);
+}
+.tab5ico .fa{
+	margin: 0;
+	font-size: 1.2em;
+	color:#4a4a4a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.tab5txt h3{margin:0;font-size:20px;font-weight: bold;}
+.tab5txt p{line-height:18px;font-size:0.75em;}
+.tab6{
+	width:16%;
+	float: left;
+	margin-right: 2%;
+    margin-left: 2%;
+	cursor: pointer;
+	border: 1px solid #C4C4C4;
+	text-align: center;
+	height: 22vh;
+	border-radius: 8%;
+}
+.box-profile{
+	text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
+.tab5{
+	width:16%;
+	background-color:white;
+	box-shadow: #000 0px 2px 24px -9px;
+	height:50px;
+	border-radius: 11px;
+	float: left;
+	margin-right: 2%;
+    margin-left: 2%;
+	cursor: pointer;
+}
+.tab5:hover{box-shadow: #614dbe 0px 9px 32px -19px;}
+.tab5:hover .tab5ico{box-shadow: none;}
+.tab5:hover .fa{color:#000;font-weight:bold}
+input:focus {
+  outline: -webkit-focus-ring-color auto 0px;
+}
+.menu{
+	border: 0px solid #6963e2;
+	padding-top: 5px;
+    padding-bottom: 8px;
+	border-radius: 8px;
+	background-color:#ffffff38;
+	text-align: center;
+}
+.fa{color: white;
+    font-size: 0.7em;    padding: 0px 10px;}
+.fa:hover{color:#fabc05;cursor: pointer;}
+.fa span:hover{color:#fabc05;cursor: pointer;}
+.fa span{color: white;
+    font-size: 11px;    padding: 0px 10px;}
+.searchinput {
+      width: 35%;
+    border-radius: 35px;
+    padding: 5px 20px;
+    margin: 15px 20px;
+    box-sizing: border-box;
+    border: 1px solid #ffffff5e;
+	box-shadow: #000 0px 5px 18px -10px;
+	background-color: #fffc;
+}
+::placeholder {
+  color: black !important;
+  opacity:0.6  !important;
+}
+.ratio {
+	margin-top: 2%;
+    padding-top: 2.7%;
+    padding-bottom: 2%;
+    background: #fff;
+    margin-bottom: 2.7%;
+}
+.equipment_ratio{
+    padding-bottom: 2%;
+    background: #fff;
+    margin-bottom: 2.7%;
+	padding-top: 10px;	
+	vertical-align: middle;
+}
+
+.notifyname1 span {
+	float: right;
+    background: #16a79e;
+    padding-top: 5%;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px; 
+}
+.notifyname1 .fa-etsy {
+	font-weight: bold;color: black; 
+}
+.notifyname2 span {
+   float: right;
+    background: #fabb05;
+     padding-top: 5%;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px; 
+}
+.notifyname2 .fa-exclamation {
+   font-weight: bold;color: black; 
+}
+.notifyname3 span {
+   float: right;
+    background: #ea4237;
+    padding-top:5%;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px; 
+}
+.notifyname4 span {
+   float: right;
+    background: #7c50b6;
+    padding-top: 5%;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px; 
+}
+.notifyname5 span {
+   float: right;
+    background: #544bc1;
+     padding-top: 5%;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px; 
+}
+.subtext span {
+	font-size:11px;
+	font-weight: 600;
+}
+.fa-etsy{
+	padding:0px;
+}
+.fa-inr{
+	padding:0px;
+}
+.fa-cog{
+	padding:0px;
+}
+.fa-wrench{
+	padding:0px;
+}
+.fa-exclamation{
+	padding:0px;
+}
+.equipment_details{
+	    background: #fff;
+}
+.container{
+	width:100%;	
+}
+body {
+	font-family: Whitney-Medium; 
+	background-color:#efeff6;
+}
