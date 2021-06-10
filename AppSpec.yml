@@ -5,6 +5,6 @@ os: linux
 
 files:
 
-- source: /**/*
+- source: /AppSpec.yml
 
-destination: /home/ubuntu/infraweb
+destination: /home/ubuntu/infraweb/newfiles
