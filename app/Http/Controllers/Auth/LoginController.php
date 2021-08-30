@@ -32,7 +32,9 @@ class LoginController extends Controller
     {
         
 				$role_id = auth()->user()->role; 
-		
+		echo "hi";
+	    echo $role_id;
+	    die();
 				if($role_id ==1 ){
 						  return '/fieldsupervisor/dashboard';
 				} elseif($role_id == 2){
