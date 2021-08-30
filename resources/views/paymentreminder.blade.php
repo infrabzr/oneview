@@ -239,7 +239,7 @@ $lexpiry = ceil(($lexpiry_count/$total_equipment_n)*100);
 						
 						
 					</div></a> <a href="{{ URL('/home/documentsexpiry/')}}">
-					<div class="tab6" style="background-color:white;padding: 7px !important;border: 2px solid #fabb05 !important;">
+					<div class="tab6" style="background-color:white;padding: 7px !important;">
 					<div class="notifyname2"> <span><i class="fa fa-exclamation" aria-hidden="true"></i></span></div>
 							<div class="col-md-12 nopad">
 							<div class="col-md-12 card-body box-profile">
@@ -264,7 +264,7 @@ $lexpiry = ceil(($lexpiry_count/$total_equipment_n)*100);
 						
 						
 					</div></a>
-					<a href="{{ URL('/home/paymentreminder/')}}"><div class="tab6" style="background-color:white;padding: 7px !important;">
+					<a href="{{ URL('/home/paymentreminder/')}}"><div class="tab6" style="background-color:white;padding: 7px !important;border: 2px solid #ea4237 !important;">
 					<div class="notifyname3"> <span><i class="fa fa-inr" aria-hidden="true"></i></span></div>
 							<div class="col-md-12 nopad">
 							<div class="col-md-12 card-body box-profile">
@@ -340,14 +340,14 @@ $lexpiry = ceil(($lexpiry_count/$total_equipment_n)*100);
 	<div class="col-md-4 ratio"><div id="chartContainer1" style="height: 22vh; width: 80%;"></div></div>
 </div>
 
-<h2 style="text-align:center;font-size: 18px;">Document Expiry</h2>
+<h2 style="text-align:center;font-size: 18px;">Payment Reminder</h2>
 <div class="col-md-12">
 <div class="col-md-12 equipment_ratio">
 <span class="main_heading"> Equipment Details</span><img class="side_fixel_20" src="{{ asset('newapp/filter20x20.png') }}"><img class="side_fixel_30" src="{{ asset('newapp/excavator35x35.png') }}">
- <span class="sub_heading side_fixel_10">Own Equipment </span>
- <span class="main_heading_num side_fixel_20">0</span> <img class="side_fixel_50" src="{{ asset('newapp/rented35x35.png') }}">
+ <span class="sub_heading side_fixel_10"><strike>Own Equipment</strike> </span>
+ <span class="main_heading_num side_fixel_20"></span> <img class="side_fixel_50" src="{{ asset('newapp/rented35x35.png') }}">
  <span class="sub_heading side_fixel_10">Rent Equipment </span>
- <span class="main_heading_num side_fixel_20">1</span><span class="line1"></span>
+ <span class="main_heading_num side_fixel_20"><?php echo count($equipments); ?></span><span class="line1"></span>
  <span class="add_sub_heading " style="display:none;"><a href="{{URL::to('/equipments/create') }}" style="color: #000;font-weight: 600;">ADD EQUIPMENT <i class="fa fa-plus-circle"></i></a>
  </span>
 <div class="col-md-12 nopad margin_to_20 margin_bottom_20">

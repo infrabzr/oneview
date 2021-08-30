@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.vendor')
 @section('content')
 <style>
 .tdone{
@@ -12,6 +12,36 @@
 }
 </style>
 <style>
+.contract_ach {
+    color: #00dccd;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.contract_idle {
+    color: #f71d0f;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.contract_exce {
+    color: #16817a;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.contract_below {
+    color: #fabc05;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.contract_exce {
+    color: #16817a;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.contract_bill {
+    color: #38cec3;
+    margin-top: 10px;
+    font-weight: bold;
+}
 .contract{
 	  margin: 5px;
 }
@@ -247,13 +277,13 @@ span.in_class_four{
 	border: 1px solid #858587;
 }
 span.in_loopClass {
-    background-color: #38cec3;
-    padding-left: 8px;
-    padding-right: 7px;
+   background-color: #38cec3;
     padding-top: 4px;
-    width: 2.846%;
     padding-bottom: 4px;
     border: 1px solid #858587;
+    width: 2.7846%;
+    text-align: center;
+    display: inline-block;
 }
 .tabwidth8{
 	width:15px;
@@ -481,7 +511,13 @@ height: 200px;
 	height:70vh;
 	position:relative;	
 }	 
- 
+ #myModal .modal-dialog {
+    -webkit-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    top: 50%;
+    margin: 0 auto; 
+}
 </style>
  <link rel="stylesheet" type="text/css" href="https://www.infrabazaar.com/infracss/lightbox/style3.css" />
 
@@ -1046,7 +1082,7 @@ if(date('d',$timestamp) == $i){
   
   <div class="col-md-12  margin_to_20 margin_bottom_20">
   <div class="col-md-12  ">
-    <div class="col-md-12 margin_to_20 margin_bottom_20">
+    <div class="col-md-5 margin_to_20 margin_bottom_20">
   
   <div class="col-md-3 rental_objective_css">Rental Objective 
   <br> 
@@ -1058,6 +1094,38 @@ if(date('d',$timestamp) == $i){
   <div class="col-md-3 rental_objective_css">Rental Price <br> <span class="dollar_8">Rs {{ $equipment_details->e_rental_cost ?? '-'}}</span> </div>
   
   </div>
+  
+   <div class="col-md-7  margin_to_20 margin_bottom_20">
+  <div class="modal-content" style="border-radius: 20px;height:17vh;">
+      <div class="col-md-12" style="background:#dcf1f2;padding:10px;    font-weight: bold;font-size: 0.8em;border-top-left-radius: 20px;border-top-right-radius: 20px;">
+        
+			<div class="col-md-2">Rental Objective Achieved</b></div>
+			<div class="col-md-2">Idle</div>
+			<div class="col-md-2">Rental Objective Exceeded</div>
+			<div class="col-md-2">Below Rental Objective</div>
+			<div class="col-md-2">Total Days</div>
+			<div class="col-md-2">Total Bill</div>
+		</div>
+     
+      <div style="">
+        <div class="col-md-12">
+		 
+			<div class="col-md-2"><div class="contract_ach">{{count($achieverental) ?? '-'}} Days</div></div>
+			<div class="col-md-2"><div class="contract_idle">{{$idle_new ?? '-'}} Days</div></div>
+			<div class="col-md-2"><div class="contract_exce">{{count($exceedrental) ?? '-'}} Days</div></div>
+			<div class="col-md-2"><div class="contract_below">{{count($bwrental) ?? '-'}} Days</div></div>
+			<div class="col-md-2"><div class="contract_exce">{{$total_days ?? '-'}} Days</div></div>
+			<div class="col-md-2"><div class="contract_bill">{{$total_bill ?? '-'}}</div></div>
+		
+		</div>
+		 
+      </div> 
+    </div>
+   
+  
+  </div>
+  
+  
   </div>
  <div class="col-md-12 nopad"> 
 <div class="col-md-11 nopad"style=" background-color: #dcf1f2; text-align:center;">DPR Details<span style="float:right;">&nbsp; Month: <?php echo date('F');?></span>
@@ -1078,13 +1146,14 @@ if(date('d',$timestamp) == $i){
 <span class="<?php echo $class; ?>" ><?php if($i<10){echo 0; } echo $i; ?></span>
 
 <?php }// } ?>
+<span class="in_loopClass">All</span> 
 </div> 
 
 
 
 </div>  
 <?php if(count($dprdetails) != 0){ $per = ceil($percount/count($dprdetails)). '%';}//$per =  number_format( $per * 100, 2 ) . '%'; ?>
-<div class="col-md-1" ><span class="right_side_border" style="font-weight: bold;width: 100%;     text-align: center;    display: inline-block;    padding: 5px;margin-top: 22px;">{{$per ?? '-'}} </span></div>
+<div class="col-md-1" ><span class="right_side_border" style="font-weight: bold;width: 100%;     text-align: center;    display: inline-block;    padding: 5px;margin-top: 30px;">{{$per ?? '-'}} </span></div>
 
 
 

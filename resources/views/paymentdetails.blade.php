@@ -1,5 +1,6 @@
-@extends(((Auth::user()->role == '5') ? 'layouts.vendor' : 'layouts.app'))
+@extends('layouts.vendor') 
 @section('content')
+
 <style>
 
 .main_heading{
@@ -43,7 +44,7 @@
 }
 .side_fixel_35{
 	    vertical-align: middle;
-	padding-left:10px;
+	padding-left:35px;
 }
 .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
     border: none;
@@ -176,49 +177,44 @@ span.delete_icon_p {
 }
 span.in_class_one {
     background-color:  #38cec3;
+    padding-left: 8px;
+    padding-right: 8px;
     padding-top: 4px;
     padding-bottom: 4px;
-	  width: 2.9646%;
-    text-align: center;
 	border: 1px solid #858587;
-	    display: inline-block;
 }
 span.in_class_two {
     background-color:  #f71d0f;
-    padding-top: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top:4px;
     padding-bottom: 4px;
-	  width: 2.9646%;
-    text-align: center;
 	border: 1px solid #858587;
-	    display: inline-block;
 }
 span.in_class_three{
     background-color: #fabc05;
+    padding-left: 8px;
+    padding-right: 8px;
     padding-top: 4px;
     padding-bottom: 4px;
-	  width: 2.9646%;
-    text-align: center;
-	    display: inline-block;
 	border: 1px solid #858587;
 }
 span.in_class_four{
     background-color: #16817a;
+    padding-left: 8px;
+    padding-right: 8px;
     padding-top: 4px;
-    padding-bottom: 4px;
-	  width: 2.9646%;
-	      display: inline-block;
-    text-align: center;
+    padding-bottom:4px;
 	border: 1px solid #858587;
 	color: #fff;
 }
 span.in_loopClass {
-   background-color: #38cec3;
-    padding-top: 4px;
+    background-color:  #38cec3;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top:4px;
     padding-bottom: 4px;
-    border: 1px solid #858587;
-    width: 2.94%;
-    text-align: center;
-    display: inline-block;
+	border: 1px solid #858587;
 }
 .tabwidth8{
 	width:15px;
@@ -233,12 +229,12 @@ span.right_side_border {
 }
 .rental_objective_css{
 	color:#7572ce;
-	    padding-left: 10%;
 }
 .days_css{
 	color:#6f6464!important;
 }
 .dollar_8{
+	border: 1px solid #b0b0b3;
 	padding:1px;
 	color:#111112;
 	width:23px;
@@ -246,11 +242,6 @@ span.right_side_border {
 }
 .right_side_border{
 	color:#099187;
-	border: 1px solid #000;
-    text-align: center;
-    padding-top: 4%;
-    margin-bottom: 7%;
-    padding-bottom: 4%;
 }
 span.view_css_new {
     background: linear-gradient(
@@ -259,43 +250,144 @@ span.view_css_new {
 color:#fff;
 	padding-top: 5px;
     padding-bottom: 5px;
-
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .side_h5{
 	color:#2b2626;
-	font-weight:600;
 }
 .view_right{
 	text-align:right;
 }
-.tab6{
-	height:auto!important;
+.raise_invoice{
+	background-color:#ccc;
+	padding:2%;
+	color:#000;
+	border-radius:5%;
 }
 </style>
 <body>
-<?php 
- $role_id = Auth::user()->role; 
-		
-				if($role_id ==5){ ?>
+
 
 <div class="col-md-12">
 
-    <div class="col-md-4 ratio">
-			<div id="chartContainer1" style="height: 144px; width: 80%;"></div>		
+    <div class="col-md-8 ratio">
+					
+						
+						<div class="tab6" style="background-color:white;padding: 7px !important;height:22vh">
+						<div class="notifyname1"> <!--<span><i class="fa fa-etsy" aria-hidden="true"></i></span>--></div>
+							<div class="col-md-12 nopad" style="margin-top: 3vh;">
+							<div class="col-md-12 card-body box-profile">
+						 <div class="c100 p100 margin_left_24">
+								<span>100</span>
+								<div class="slice">
+									<div class="bar" style="border: 0.08em solid #16a79e;"></div>
+									<div class="fill" style="border: 0.08em solid #16a79e;"></div>
+								</div>
+							</div>
+							</div>
+							<div class="subtext">
+								<span>Ready for invoicing</span>
+							</div>
+							</div>
+		
+						
+						
+					</div>
+					<div class="tab6" style="background-color:white;padding: 7px !important;height:22vh">
+					<div class="notifyname2"> <!--<span><i class="fa fa-exclamation" aria-hidden="true"></i></span>--></div>
+							<div class="col-md-12 nopad" style="margin-top: 3vh;">
+							<div class="col-md-12 card-body box-profile">
+						 <div class="c100 p100 margin_left_24" >
+								<span>80 </span>
+								<div class="slice">
+									<div class="bar" style="border: 0.08em solid #fabb05" ></div>
+									<div class="fill" style="border: 0.08em solid #fabb05;"></div>
+								</div>
+							</div>
+							</div><div class="subtext">
+								<span>Raised Invoice</span>
+							
+							</div>
+							</div>
+		
+						
+						
+					</div>
+					<div class="tab6" style="background-color:white;padding: 7px !important;height:22vh">
+					<div class="notifyname3"> <!--<span><i class="fa fa-inr" aria-hidden="true"></i></span>--></div>
+							<div class="col-md-12 nopad" style="margin-top: 3vh;">
+							<div class="col-md-12 card-body box-profile">
+						 <div class="c100 p100 margin_left_24" >
+								<span>70</span>
+								<div class="slice">
+									<div class="bar" style="border: 0.08em solid #ea4237"></div>
+									<div class="fill" style="border: 0.08em solid #ea4237"></div>
+								</div>
+							</div>
+							</div><div class="subtext">
+								<span>Approved Invoices</span>
+							
+							</div>
+							</div>
+		
+						
+						
+					</div>
+					<div class="tab6" style="background-color:white;padding: 7px !important;height:22vh">
+					<div class="notifyname4"> <!--<span><i class="fa fa-cog" aria-hidden="true"></i></span>--></div>
+							<div class="col-md-12 nopad" style="margin-top: 3vh;">
+							<div class="col-md-12 card-body box-profile">
+						 <div class="c100 p100 margin_left_24">
+								<span>60</span>
+								<div class="slice">
+									<div class="bar" style="border: 0.08em solid #544bc1"></div>
+									<div class="fill" style="border: 0.08em solid #7c50b6"></div>
+								</div>
+							</div>
+							</div><div class="subtext">
+								<span>Rejected Invoices</span>
+							
+							</div>
+							</div>
+		
+						
+						
+					</div>
+					<div class="tab6" style="background-color:white;padding: 7px !important;height:22vh">
+					<div class="notifyname5"> <!--<span><i class="fa fa-wrench" aria-hidden="true"></i></span>--></div>
+							<div class="col-md-12 nopad" style="margin-top: 3vh;">
+							<div class="col-md-12 card-body box-profile">
+						 <div class="margin_left_24 c100 p100 " >
+								<span>50</span>
+								<div class="slice">
+									<div class="bar" ></div>
+									<div class="fill"></div>
+								</div>
+							</div>
+							</div><div class="subtext">
+								<span>View Previous Invoices</span>
+							
+							</div>
+							</div>
+		
+						
+						
+					</div>
 						
        
-    </div><div class="col-md-4 ratio"><div id="chartContainer2" style="height: 144px; width: 80%;"></div>	</div>
-	<div class="col-md-4 ratio"><div id="chartContainer" style="height: 144px; width: 100%;"></div>	</div>
+    </div>
+	
 </div>
-				<?php } ?>
-<div class="col-md-12" style="margin-top:1%;">
+
+<div class="col-md-12">
 <div class="col-md-12 equipment_ratio">
 <span class="main_heading">DPR Details</span><img class="side_fixel_50" src="https://materialwala.com/buildsand/site_assets/newapp/filter20x20.png"><img class="side_fixel_30" src="https://materialwala.com/buildsand/site_assets/newapp/excavator35x35.png">
  <span class="sub_heading side_fixel_10">Vehicles </span>
- <span class="main_heading_num side_fixel_20">{{$vehicles_count}}</span> <img class="side_fixel_50" src="https://materialwala.com/buildsand/site_assets/newapp/rented35x35.png">
+ <span class="main_heading_num side_fixel_20">20</span> <img class="side_fixel_50" src="https://materialwala.com/buildsand/site_assets/newapp/rented35x35.png">
  <span class="sub_heading side_fixel_10">Equipments </span>
- <span class="main_heading_num side_fixel_20">{{$equipment_count_e}}</span>
- <span class="add_sub_heading right_side">NEW REQUEST <i class="fa fa-plus-circle"></i></span>
+ <span class="main_heading_num side_fixel_20">30</span>
+
 <div class="col-md-12 nopad margin_to_20 margin_bottom_20">
 <form method="post" action="{{ route('equipmentsearch') }}">
 @csrf
@@ -322,22 +414,7 @@ color:#fff;
   @foreach($equipemntdata as $key => $val)
  <option value="{{ $equipemntdata[$key]->project_code }}">{{ $equipemntdata[$key]->project_code }}</option>
    @endforeach
-</select></span>
-<span class="side_fixel_35 ">
-<select class="form-select form_select_fil_2" name ="project_code" aria-label="Default select example">
-  <option selected>Project Name</option>
-  @foreach($equipemntdata as $key => $val)
- <option value="{{ $equipemntdata[$key]->project_code }}">{{ $equipemntdata[$key]->project_name }}</option>
-   @endforeach
-</select></span>
-<span class="side_fixel_35 ">
-<select class="form-select form_select_fil_2" name ="project_code" aria-label="Default select example">
-  <option selected>Site</option>
-  @foreach($equipemntdata as $key => $val)
- <option value="{{ $equipemntdata[$key]->project_code }}">{{ $equipemntdata[$key]->project_code }}</option>
-   @endforeach
-</select></span>
-<span class="side_fixel_35 ">
+</select></span><span class="side_fixel_35 ">
 <select class="form-select form_select_fil_2" name="product_type" aria-label="Default select example">
   <option selected>Product Type</option>
   <option value="Own">Own</option>
@@ -346,8 +423,8 @@ color:#fff;
 </select></span><span class="side_fixel_35 ">
 <select class="form-select form_select_fil_2" aria-label="Default select example" name="equipment_type">
   <option selected>Equipment Type</option>
- @foreach($equipment as $key => $val)
- <option value="{{ $equipment[$key]->e_equipment_type }}">{{ $equipment[$key]->e_equipment_type }}</option>
+ @foreach($equipemntdata as $key => $val)
+ <option value="{{ $equipemntdata[$key]->e_equipment_type }}">{{ $equipemntdata[$key]->e_equipment_type }}</option>
    @endforeach
 </select>
 </span><span class="side_fixel_35 ">
@@ -364,47 +441,45 @@ color:#fff;
 $diffdays = $equipments[$key]->e_wom
 
 @endphp
-<div class="col-md-12"><div class="col-md-11 nopad" style=" background-color: #dcf1f2; ">
-<span class="cnopad side_h5">{{ $equipments[$key]->e_equipment_type }} #IB21-{{$equipments[$key]->e_id}} </span>
-<span class=" rental_objective_css">Rental Objective</span> <span class="dollar_8"><?php echo  ceil($diffdays/30); ?></span>
-<span class="days_css"> Hrs/ {{ $equipments[$key]->e_wom }} Hrs per month</span>
-
+<div class="col-md-10" style="padding-bottom: 1%;margin-bottom: -17px;border-left: 1px solid #e0e0e7; border-right: 1px solid #e0e0e7; border-top: 1px solid #e0e0e7;padding-top: 0.3%;">
+<div class="col-md-4 rental_objective_css">Rental Objective <span class="dollar_8">${{$diffdays/30}}</span>
+<span class="days_css"> Hrs/ ${{ $equipments[$key]->e_wom }} Hrs per month</span>
+</div>
 @php
 $fdate = $equipments[$key]->e_rental_start_date;
 $tdate = $equipments[$key]->e_rental_end_date;
 $datetime1 = strtotime($fdate);
 $datetime2 = strtotime($tdate); 
 $days = (int)(($datetime2 - $datetime1)/86400);
+
 @endphp
-<span class="rental_objective_css">Rental Billing Cycle </span><span class="dollar_8">{{ $equipments[$key]->e_billing_cycle }}</span>
- <span class="days_css">Days</span><span class=" rental_objective_css">Rental Period <span class="dollar_8">{{$days}} </span>
- <span class="days_css"> year</span>
-
-
-<div class="col-md-12 nopad"style="  border-bottom: 6px solid #dcf1f2;    background: #dcf1f2;">
-<a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_one">01</span></a>
-<a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_two">02</span></a>
-<a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_three">03</span></a>
-<a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_four">04</span></a>
+<div class="col-md-3 rental_objective_css">Rental Billing Cycle <span class="dollar_8">${{ $equipments[$key]->e_billing_cycle }}</span>
+ <span class="days_css">Days</span></div> <div class="col-md-3 rental_objective_css">Rental Period <span class="dollar_8">${{$days}} </span>
+ <span class="days_css"> year</span></div><div class="col-md-2 rental_objective_css"><span class="raise_invoice">Raise Invoice</span></div></div>
+ <div class="col-md-1 view_right"><a href="http://18.225.35.19/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="view_css_new">View</span></a></div>
+ <div class="col-md-12 ">&nbsp;</div>
+<div class="col-md-1 nopad side_h5">{{ $equipments[$key]->e_equipment_type }} #IB21-{{$equipments[$key]->e_id}} </div>
+<div class="col-md-11 nopad">
+<a href="http://18.225.35.19/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_one">01</span></a>
+<a href="http://18.225.35.19/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_two">02</span></a>
+<a href="http://18.225.35.19/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_three">03</span></a>
+<a href="http://18.225.35.19/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_four">04</span></a>
 <?PHP  for( $i=5; $i<=31; $i++){ ?>
-<a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_loopClass"><?php if($i<10){ echo 0; } echo $i; ?></span></a>
-<?php } ?>
-</div> </div><div class="col-md-1 view_right"><p style="text-align: center; border: 1px solid;"><span>79%</span></p><p style="text-align: center; border: 1px solid; background: linear-gradient( 
-95deg
- , rgba(79,74,194,1) 23%, rgba(151,83,175,1) 100%);
-    color: #fff;"><a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}" style="color:#fff;">View</a></p></div><!--<div class="col-md-1 view_right"><div class="right_side_border">79%</div><div><a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="view_css_new">View</span></a></div></div>--><div class="col-md-12 ">&nbsp;</div>
+<a href="http://18.225.35.19/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_loopClass"><?php if($i<10){ echo 0; } echo $i; ?></span></a>
+<?php } ?><Span class="right_side_border">$79%</span>
+</div><div class="col-md-12 ">&nbsp;</div>
 
 </div>
  @endforeach
-<div class="col-md-12"><div class="col-md-3 nopad"><div class="col-md-1">
+<div class="col-md-12"><div class="col-md-2 nopad"><div class="col-md-1">
 <div class=" tabwidth8 tab5ico" style="background-image: linear-gradient(to right, #16a79d , #00dccd 80%);    margin-top: 31%;">	</div></div><div class="col-md-11 side_h5">&nbsp; Rental objective achieved </div>
-</div><div class="col-md-3 nopad"><div class="col-md-1">
+</div><div class="col-md-1 nopad"><div class="col-md-1">
 <div class="tabwidth8  tab5ico" style="background-color:#f71d0f; margin-top: 31%;background-image: none;"></div>	
 			
-			</div ><div class="col-md-11 side_h5">&nbsp; Idle</div></div><div class="col-md-3 nopad"><div class="col-md-1">
+			</div ><div class="col-md-11 side_h5">&nbsp; Idle</div></div><div class="col-md-2 nopad"><div class="col-md-1">
 			<div class=" tabwidth8 tab5ico" style="background-color: #16817a;background-image: none; margin-top: 31%;">&nbsp;&nbsp;	</div></div><div class="col-md-11 side_h5">&nbsp; Rental Objective Exceeded</div>
 </div>
-<div class="col-md-3 nopad"><div class="col-md-1">
+<div class="col-md-2 nopad"><div class="col-md-1">
 			<div class=" tabwidth8 tab5ico" style="background-color:#fabc05;background-image: none; margin-top: 31%;">&nbsp;&nbsp;	</div></div><div class="col-md-11 side_h5">&nbsp; Below Rental Objective</div>
 </div>
 </div>

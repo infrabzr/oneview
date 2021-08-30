@@ -216,7 +216,7 @@ span.in_loopClass {
     padding-top: 4px;
     padding-bottom: 4px;
     border: 1px solid #858587;
-    width: 2.94%;
+    width: 2.9446%;
     text-align: center;
     display: inline-block;
 }
@@ -259,7 +259,8 @@ span.view_css_new {
 color:#fff;
 	padding-top: 5px;
     padding-bottom: 5px;
-
+    padding-left: 22px;
+    padding-right: 22px;
 }
 .side_h5{
 	color:#2b2626;
@@ -295,7 +296,6 @@ color:#fff;
  <span class="main_heading_num side_fixel_20">{{$vehicles_count}}</span> <img class="side_fixel_50" src="https://materialwala.com/buildsand/site_assets/newapp/rented35x35.png">
  <span class="sub_heading side_fixel_10">Equipments </span>
  <span class="main_heading_num side_fixel_20">{{$equipment_count_e}}</span>
- <span class="add_sub_heading right_side">NEW REQUEST <i class="fa fa-plus-circle"></i></span>
 <div class="col-md-12 nopad margin_to_20 margin_bottom_20">
 <form method="post" action="{{ route('equipmentsearch') }}">
 @csrf
@@ -382,17 +382,17 @@ $days = (int)(($datetime2 - $datetime1)/86400);
 
 
 <div class="col-md-12 nopad"style="  border-bottom: 6px solid #dcf1f2;    background: #dcf1f2;">
-<a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_one">01</span></a>
-<a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_two">02</span></a>
-<a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_three">03</span></a>
-<a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_four">04</span></a>
+<a href="http://13.233.71.224/equipments/vendor_equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_one">01</span></a>
+<a href="http://13.233.71.224/equipments/vendor_equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_two">02</span></a>
+<a href="http://13.233.71.224/equipments/vendor_equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_three">03</span></a>
+<a href="http://13.233.71.224/equipments/vendor_equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_class_four">04</span></a>
 <?PHP  for( $i=5; $i<=31; $i++){ ?>
-<a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_loopClass"><?php if($i<10){ echo 0; } echo $i; ?></span></a>
+<a href="http://13.233.71.224/equipments/vendor_equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="in_loopClass"><?php if($i<10){ echo 0; } echo $i; ?></span></a>
 <?php } ?>
 </div> </div><div class="col-md-1 view_right"><p style="text-align: center; border: 1px solid;"><span>79%</span></p><p style="text-align: center; border: 1px solid; background: linear-gradient( 
 95deg
  , rgba(79,74,194,1) 23%, rgba(151,83,175,1) 100%);
-    color: #fff;"><a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}" style="color:#fff;">View</a></p></div><!--<div class="col-md-1 view_right"><div class="right_side_border">79%</div><div><a href="http://13.233.71.224/equipments/equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="view_css_new">View</span></a></div></div>--><div class="col-md-12 ">&nbsp;</div>
+    color: #fff;"><a href="http://13.233.71.224/equipments/vendor_equipment_detailview/{{ $equipments[$key]->e_id }}" style="color:#fff;">View</a></p></div><!--<div class="col-md-1 view_right"><div class="right_side_border">79%</div><div><a href="http://13.233.71.224/equipments/vendor_equipment_detailview/{{ $equipments[$key]->e_id }}"><span class="view_css_new">View</span></a></div></div>--><div class="col-md-12 ">&nbsp;</div>
 
 </div>
  @endforeach
@@ -412,6 +412,11 @@ $days = (int)(($datetime2 - $datetime1)/86400);
 </div>
 </div>
 </body>
+<?php 
+		$total_equipment = \DB::table('equipments')
+						->get();
+		$total_equipment_count = $total_equipment->count();
+		?>
 <footer><script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script>
 window.onload = function() {
@@ -428,7 +433,9 @@ window.onload = function() {
 	data: [
 	{
 		// Change type to "bar", "area", "spline", "pie",etc.
-		type: "column",
+		type: "column",	
+		yValueFormatString: "",
+		indexLabel: "{y}",
 		dataPoints: [
 			{ label: "p1",  y: 500  },
 			{ label: "p2",  y: 200 },
@@ -455,11 +462,13 @@ var chart = new CanvasJS.Chart("chartContainer2", {
 	data: [
 	{
 		// Change type to "bar", "area", "spline", "pie",etc.
-		type: "column",
+		type: "column",	
+		yValueFormatString: "",
+		indexLabel: "{y}",
 		dataPoints: [
-			{ label: "Total",  y: 500  },
-			{ label: "Active",  y: 100 },
-			{ label: "Breakdown",  y: 400  },
+			{ label: "Total",  y: <?php echo $total_equipment_count; ?>  },
+			{ label: "Active",  y: 26 },
+			{ label: "Breakdown",  y: 5  },
 			
 		]
 	}

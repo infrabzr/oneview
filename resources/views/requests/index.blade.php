@@ -1,14 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.vendor')
 
 @section('content')
 
 <style>
-.c100 > span {
-cursor: pointer!important;
-}
-.c100 {
-    cursor: pointer!important;
-}
+
 .main_heading{
 	color:#444447 ;
 	font-size:18px;
@@ -27,11 +22,10 @@ cursor: pointer!important;
 .add_sub_heading{
 	color:#444447;
 	font-size:13px;
-	vertical-align:middlie;
 }
 .right_side{
 	float:right;
-	    margin-top: 0px;
+	    margin-top: 1%;
 }
 .side_fixel_20{
 	    vertical-align: middle;
@@ -105,10 +99,8 @@ width: 90px;
 	font-size:13px;
 }
 .fa-plus-circle{
-	font-size:30px;  
+	font-size:20px;
 	color:#544bc1;
-	vertical-align: middle;
-	margin-bottom: 6px;
 }
 select.form_select_fil {
     max-width: 300px;
@@ -184,27 +176,6 @@ span.delete_icon_p {
     font-size: 10px;
 }
 }
-.line1 {
-      width: 36%;
-    height: 0;
-    border: 1px solid #C4C4C4;
-    margin: 3px;
-    color: #e0e0e7!important;
-    display: inline-block;
-    margin-left: 2%;
-    margin-right: 1%;
-
-}
-.new_css{
-	background: linear-gradient( 
-79deg
- , rgba(101,77,188,1) 23%, rgba(168,42,167,1) 100%)!important;
-    border-radius: 20px!important;
-    border: none!important;
-    color: #fff!important;
-    font-size: 12px!important;
-    width: 90px!important;
-}
 </style>
 <body>
 
@@ -212,43 +183,19 @@ span.delete_icon_p {
 <div class="col-md-12">
 
     <div class="col-md-8 ratio">
-<?php 
-$lexpiry = ceil(($lexpiry_count/$total_equipment_n)*100);
-?>
-						<a href="{{ URL('/home/rentalleaseexpiry/')}}"><div class="tab6" style="background-color:white;padding: 7px !important;">
-						<div class="notifyname1"> <span><i class="fa fa-etsy" aria-hidden="true"></i></span></div>
-							<div class="col-md-12 nopad">
-							<div class="col-md-12 card-body box-profile">
-						 <div class="c100 p<?php echo $lexpiry; ?> margin_left_24">
-								<span><?php echo $lexpiry; ?>%</span>
-								<div class="slice">
-									<div class="bar" style="border: 0.08em solid #16a79e;"></div>
-									<?php if($lexpiry <=50){?>
-									<div class="fill" ></div>
-									<?php }else{ ?>
-									<div class="fill" style="border: 0.08em solid #16a79e;"></div>
-									<?php } ?>
-								</div>
-							</div>
-							</div>
-							<div class="subtext">
-								<span>Equipment Approaching Rental Lease Expiry</span>
-							</div>
-							</div>
-		
-						
-						
-					</div></a> <a href="{{ URL('/home/documentsexpiry/')}}">
-					<div class="tab6" style="background-color:white;padding: 7px !important;border: 2px solid #fabb05 !important;">
+					
+
+				 
+					<div class="tab6" style="background-color:white;padding: 7px !important;height:22vh;">
 					<div class="notifyname2"> <span><i class="fa fa-exclamation" aria-hidden="true"></i></span></div>
 							<div class="col-md-12 nopad">
 							<div class="col-md-12 card-body box-profile">
-							<?php $dexpiry = ceil(($dexpiry_count/$total_equipment_n)*100); ?>
-						 <div class="c100 p<?php echo $dexpiry; ?> margin_left_24" >
-								<span><?php echo $dexpiry; ?> %</span>
+							<?php $newrequest = ceil(($newrequest_count/$total_request_n)*100); ?>
+						 <div class="c100 p<?php echo $newrequest; ?> margin_left_24" >
+								<span><?php echo $newrequest; ?> %</span>
 								<div class="slice">
 									<div class="bar" style="border: 0.08em solid #fabb05" ></div>
-									<?php if($dexpiry <=50){ ?>
+									<?php if($newrequest <=50){ ?>
 									<div class="fill" ></div>
 									<?php }else{ ?>
 									<div class="fill" style="border: 0.08em solid #fabb05;"></div>
@@ -256,100 +203,93 @@ $lexpiry = ceil(($lexpiry_count/$total_equipment_n)*100);
 								</div>
 							</div>
 							</div><div class="subtext">
-								<span>Document Expiry</span>
+									<span>New<br>Equipment Request</span>						
 							
 							</div>
 							</div>
 		
 						
 						
-					</div></a>
-					<a href="{{ URL('/home/paymentreminder/')}}"><div class="tab6" style="background-color:white;padding: 7px !important;">
+					</div>
+					
+					 
+
+
+					 
+					<div class="tab6" style="background-color:white;padding: 7px !important;height:22vh;">
 					<div class="notifyname3"> <span><i class="fa fa-inr" aria-hidden="true"></i></span></div>
 							<div class="col-md-12 nopad">
 							<div class="col-md-12 card-body box-profile">
-							<?php $breminder = ceil(($bremindercount/$total_equipment_n)*100); ?>
-						 <div class="c100 p<?php echo $breminder; ?> margin_left_24" >
-								<span><?php echo $breminder; ?> %</span>
+						 <div class="c100 p70 margin_left_24" >
+								<span>70%</span>
 								<div class="slice">
-									<div class="bar" style="border: 0.08em solid #ea4237"></div>
-									<?php if($breminder <=50){?>
-									<div class="fill" ></div>
-									<?php }else{ ?>
-									<div class="fill" style="border: 0.08em solid #ea4237;"></div>
-									<?php } ?>
+									<div class="bar" style="border: 0.08em solid #544bc1"></div>
+									<div class="fill" style="border: 0.08em solid #544bc1"></div>
 								</div>
 							</div>
 							</div><div class="subtext">
-								<span>Payment Reminder</span>
+								<span>Request Pending <b> at client</span>
 							
 							</div>
 							</div>
 		
 						
 						
-					</div></a>
-					<a href="{{ URL('/home/idleequipment/')}}"><div class="tab6" style="background-color:white;padding: 7px !important;">
+					</div>
+					<div class="tab6" style="background-color:white;padding: 7px !important;height:22vh;">
 					<div class="notifyname4"> <span><i class="fa fa-cog" aria-hidden="true"></i></span></div>
 							<div class="col-md-12 nopad">
 							<div class="col-md-12 card-body box-profile">
-								<?php $idleequipmentcount = ceil(($idleequipmentcount/$total_equipment_n)*100); ?>
-						 <div class="c100 p<?php echo $idleequipmentcount; ?> margin_left_24">
-								<span><?php echo $idleequipmentcount; ?>%</span>
+						 <div class="c100 p60 margin_left_24">
+								<span>60%</span>
 								<div class="slice">
-									<div class="bar" style="border: 0.08em solid #7c50b6"></div>
-									<?php if($idleequipmentcount <= 50){?>
-									<div class="fill" ></div>
-									<?php }else{ ?>
-									<div class="fill" style="border: 0.08em solid #7c50b6;"></div>
-									<?php } ?>
+									<div class="bar" style="border: 0.08em solid #ea4237"></div>
+									<div class="fill" style="border: 0.08em solid #ea4237"></div>
 								</div>
 							</div>
 							</div><div class="subtext">
-								<span>Idle Equipment</span>
+								<span>Rejected by Client</span>
 							
 							</div>
 							</div>
 		
 						
 						
-					</div></a>
-					<a href="{{ URL('/home/equipemntbreakdown/')}}"><div class="tab6" style="background-color:white;padding: 7px !important;">
+					</div>
+					<div class="tab6" style="background-color:white;padding: 7px !important;height:22vh;">
 					<div class="notifyname5"> <span><i class="fa fa-wrench" aria-hidden="true"></i></span></div>
 							<div class="col-md-12 nopad">
 							<div class="col-md-12 card-body box-profile">
-						 <div class="margin_left_24 c100 p70 " >
-								<span>70%</span>
+						 <div class="margin_left_24 c100 p50 " >
+								<span>50%</span>
 								<div class="slice">
 									<div class="bar" ></div>
 									<div class="fill"></div>
 								</div>
 							</div>
 							</div><div class="subtext">
-								<span>Equipment Breakdown</span>
+								<span>Approved Requests</span>
 							
 							</div>
 							</div>
 		
 						
 						
-					</div></a>
+					</div>
 						
        
     </div>
-	<div class="col-md-4 ratio"><div id="chartContainer1" style="height: 22vh; width: 80%;"></div></div>
+	 
 </div>
 
-<h2 style="text-align:center;font-size: 18px;">Document Expiry</h2>
 <div class="col-md-12">
 <div class="col-md-12 equipment_ratio">
-<span class="main_heading"> Equipment Details</span><img class="side_fixel_20" src="{{ asset('newapp/filter20x20.png') }}"><img class="side_fixel_30" src="{{ asset('newapp/excavator35x35.png') }}">
- <span class="sub_heading side_fixel_10">Own Equipment </span>
- <span class="main_heading_num side_fixel_20">0</span> <img class="side_fixel_50" src="{{ asset('newapp/rented35x35.png') }}">
- <span class="sub_heading side_fixel_10">Rent Equipment </span>
- <span class="main_heading_num side_fixel_20">1</span><span class="line1"></span>
- <span class="add_sub_heading " style="display:none;"><a href="{{URL::to('/equipments/create') }}" style="color: #000;font-weight: 600;">ADD EQUIPMENT <i class="fa fa-plus-circle"></i></a>
- </span>
+<span class="main_heading"> Equipment Details</span><img class="side_fixel_20" src="https://materialwala.com/buildsand/site_assets/newapp/filter20x20.png"><img class="side_fixel_30" src="https://materialwala.com/buildsand/site_assets/newapp/excavator35x35.png">
+ <span class="sub_heading side_fixel_10">Vehicle Request </span>
+ <span class="main_heading_num side_fixel_20">{{ $typevehicle_count }}</span> <img class="side_fixel_50" src="https://materialwala.com/buildsand/site_assets/newapp/rented35x35.png">
+ <span class="sub_heading side_fixel_10">Equipment Request</span>
+ <span class="main_heading_num side_fixel_20">{{ $typeequipment_count }}</span>
+ <span class="add_sub_heading right_side"><a href="{{URL::to('/requests/requestjunior') }}">New Request </a><i class="fa fa-plus-circle"></i></span>
 <div class="col-md-12 nopad margin_to_20 margin_bottom_20">
 <form method="post" action="{{ route('search') }}">
 @csrf
@@ -358,39 +298,36 @@ $lexpiry = ceil(($lexpiry_count/$total_equipment_n)*100);
   <option selected>Select by </option>
   <option value="1" selected>State</option>
   <option value="2">City</option> 
-</select></span><span class="side_fixel_35 "> 
-<select class="form-select form_select_fil_2" id="states_cities" name="states_cities" aria-label="Default select example">
-<option>Select State</option>
-	@foreach($states as $key => $val)
- <option value="{{ $states[$key]->state_name }}">{{ $states[$key]->state_name }}</option>
-   @endforeach
 </select></span><span class="side_fixel_35 ">
-<select class="form-select form_select_fil_2" name="project_type" aria-label="Default select example">
+<select class="form-select form_select_fil_2" id="states_cities" name="states_cities" aria-label="Default select example">
+ 
+</select></span><span class="side_fixel_35 ">
+<select class="form-select form_select_fil_2" name="r_product_type" aria-label="Default select example">
   <option selected>Project Type</option>
- @foreach($project_type as $key => $val)
- <option value="{{ $project_type[$key]->project_type }}">{{ $project_type[$key]->project_type }}</option>
+ @foreach($requests as $key => $val)
+ <option value="{{ $requests[$key]->project_type }}">{{ $requests[$key]->r_product_type }}</option>
    @endforeach
 </select></span><span class="side_fixel_35 ">
 <select class="form-select form_select_fil_2" name ="project_code" aria-label="Default select example">
   <option selected>Project Code</option>
-  @foreach($equipments as $key => $val)
- <option value="{{ $equipments[$key]->project_code }}">{{ $equipments[$key]->project_code }}</option>
+  @foreach($requests as $key => $val)
+ <option value="{{ $requests[$key]->project_code }}">{{ $requests[$key]->project_code }}</option>
    @endforeach
 </select></span><span class="side_fixel_35 ">
-<select class="form-select form_select_fil_2"  name="product_type" aria-label="Default select example">
+<select class="form-select form_select_fil_2"  name="r_product_type" aria-label="Default select example">
   <option selected>Product Type</option>
   <option value="Own">Own</option>
   <option value="Rented">Rented</option>
   <option value="Both">Both</option>
 </select></span><span class="side_fixel_35 ">
-<select class="form-select form_select_fil_2" name="equipment_type" aria-label="Default select example">
+<select class="form-select form_select_fil_2" name="r_equipment_type" aria-label="Default select example">
   <option selected>Equipment Type</option>
- @foreach($equipment as $key => $val)
- <option value="{{ $equipment[$key]->e_equipment_type }}">{{ $equipment[$key]->e_equipment_type }}</option>
+ @foreach($requests as $key => $val)
+ <option value="{{ $requests[$key]->r_equipment_type }}">{{ $requests[$key]->r_equipment_type }}</option>
    @endforeach
 </select>
 </span><span class="side_fixel_35 ">
-<input  type="submit" class="btn btn-primary btn_apply new_css"></button>
+<input  type="submit" class="btn btn-primary btn_apply"></button>
 </span><span class="side_fixel_35 " style="display:none;">Search Equipment</span>
 </form>
 </div>
@@ -398,45 +335,36 @@ $lexpiry = ceil(($lexpiry_count/$total_equipment_n)*100);
 <div class="col-md-12 nopad">
 <table id="example1" class="table table-bordered table-striped" style="box-shadow: 0 2px 4px 0 rgba(181,181,181,.7);">
               <thead>
-                    <tr class="table_header">
-					   <th>S.No</th>
-					   <th>Vehicle Code</th> 
-					   <th>Equipment Type</th>
-					   <th>Vehicle Number</th>
-					   <th>Project Code</th>					   
-					   <th>Project Name</th>
-					   <th>State</th>
-					   <th>City</th> 
-					   <th>Field Supervisor</th>
-					   <th>Action</th> 					  
-                    </tr>
+                   <tr class="table_header">
+					  <th>S.No</th>
+					  <th>Requested Date</th> 
+					  <th>Vehicle Name</th>
+					  <th>Project Name</th>
+					  <th>Product Code</th>
+					  <th>State</th>
+					  <th>City</th> 
+					 <th>Field Supervisor</th>
+					  <th>Action</th> 					  
+                </tr>
               </thead>
               <tbody>
 			  
-			  @foreach($equipments as $key => $val)
+			  @foreach($requests as $key => $val)
      
      
 
 			  <tr>
-			  <td>{{$loop->iteration}}</td>
-			 <td></td>
-			  <td>{{ $equipments[$key]->e_equipment_type }}</td>
-			   <td>{{ $equipments[$key]->e_vehicle_number }}</td>
-			  <td>{{ $equipments[$key]->project_code }}</td>
-			  <td>{{ $equipments[$key]->project_name }}</td>
-			   
-			   <td>{{ $equipments[$key]->state }}</td>
-			   <td>{{ $equipments[$key]->city }}</td>
+			  <td>{{ $loop->iteration }}</td>
+			  <td>{{ $requests[$key]->created_at }}</td>
+			  <td>{{ $requests[$key]->r_equipment_type }}</td>
+			  <td>{{ $requests[$key]->project_name }}</td>
+			   <td>{{ $requests[$key]->project_code }}</td>
+			   <td>{{ $requests[$key]->state }}</td>
+			   <td>{{ $requests[$key]->city }}</td>
 			  <td>Subban-7095338844</td>
-			  <td>
-			  <a href="{{ URL('/equipments/equipment_vendor_detailview/'.$equipments[$key]->e_id )}}"><span class="edit_icon_p"><i class="fa fa-eye" aria-hidden="true" style="font-size:1em;color:#000;"></i></span></a>
-			  <span class="delete_icon_p"><i class="fa fa-trash-o fa-lg"></i></span>
-			  @if($equipments[$key]->e_product_type === "Own")
-			  <span> <i class=" fa fa-etsy1 ror_text1" aria-hidden="true" style="cursor: auto;background-color: #9999ff;">O</i></span> </td> 
-			@else
-			<span> <i class=" fa fa-etsy1 ror_text1" aria-hidden="true" style="cursor: auto;">R</i></span> </td> 
+			  <td><span class="edit_icon_p"><i class="fa fa-edit"></i></span><span class="delete_icon_p"><i class="fa fa-trash-o fa-lg"></i></span><span> <i class=" fa fa-etsy1 ror_text1" aria-hidden="true">R</i></span> </td>     
 			  </tr>
-			 @endif
+			 
 			 @endforeach
 			 
               <tbody>
@@ -463,13 +391,11 @@ var chart = new CanvasJS.Chart("chartContainer1", {
 	data: [
 	{
 		// Change type to "bar", "area", "spline", "pie",etc.
-		type: "column",	
-		yValueFormatString: "",
-		indexLabel: "{y}",
+		type: "column",
 		dataPoints: [
-			{ label: "Total",  y: {{$own_equipment_count + $rent_equipment_count}}   },
-			{ label: "Own Equipment",  y: {{$own_equipment_count}}  },
-			{ label: "Rented Equipment",  y: {{$rent_equipment_count}}  },
+			{ label: "Web",  y: 5  },
+			{ label: "android",  y: 30  },
+			{ label: "ios",  y: 40  },
 			
 		]
 	}
@@ -497,7 +423,7 @@ chart.render();
         success: function( data ){
 			var newdata = data.msg;
 		 
-		 var html = '<option>Select</option>';
+		 var html = '';
 		
             $.each( newdata, function( key, value ) { 
 				 html+='<option value='+value.state_name+'>'+value.state_name+'</option>'; 

@@ -180,7 +180,7 @@ span.delete_icon_p {
 }
 }
 .line1 {
-      width: 36%;
+      width: 33%;
     height: 0;
     border: 1px solid #C4C4C4;
     margin: 3px;
