@@ -28,7 +28,7 @@ $role = Auth::user()->role;
 <div class="row">
 	<div class="col-md-12">			
 		<div class="col-md-12" style="text-align:right">
-		<a href={{URL::to('/home/superadmin')}}><img style="float:left;width: 8%;margin-top: 10px;" src="{{ asset('images/logo.png') }}"></a><span style="color: #fff;">Name: {{ Auth::user()->name }} &nbsp;&nbsp;&nbsp;&nbsp; - </span>&nbsp;&nbsp;&nbsp;&nbsp;  <span style="color: #fff;">  <?php if($role==1){ echo "Senior Management"; }else if($role==2){ echo "Super Admin";}else if($role==3){ echo "Senior Role"; }else if($role==4){ echo "Field Supervisor"; }else if($role==5){ echo "Vendor"; }elseif($role==6){ echo "Finance";} ?></span><span style="color: #fff;"> &nbsp;&nbsp;&nbsp;&nbsp;  Emp ID: #{{$role = Auth::user()->id }}</span>
+		<a href={{URL::to('/home/superadmin')}}><img style="float:left;width: 8%;margin-top: 10px;" src="{{ asset('images/logo.png') }}"></a><span style="color: #fff;">Name: {{ Auth::user()->name }} &nbsp;&nbsp;&nbsp;&nbsp; - </span>&nbsp;&nbsp;&nbsp;&nbsp;  <span style="color: #fff;">  <?php if($role==1){ echo "Senior Management"; }else if($role==2){ echo "Super Admin";}else if($role==3){ echo ""; }else if($role==4){ echo "Field Supervisor"; }else if($role==5){ echo "Vendor"; }elseif($role==6){ echo "Finance";} ?></span><span style="color: #fff;"> </span>
 		<input type="text" class="searchinput" style="color:black" id="fname" name="search" placeholder="Search"></input>
 		<i class="fa fa-snowflake-o"></i> 
  
@@ -104,8 +104,11 @@ $role = Auth::user()->role;
 				  <li><a href="{{URL::to('/equipments/create') }}">Add Equipment</a></li>  
 				  <li><a href="{{URL::to('/requests/requestwidgetclick/1') }}">Request for Equipment Approval</a></li>
 				  <li><a href="{{URL::to('/home/dbr_view') }}">DPR Details</a></li>  
+				  <li><a href="#" style="color:#ccc;">Payment Details</a></li>  
 				  <li><a href="#" style="color:#ccc;">Spare Management</a></li>  
 				  <li><a href="#"  style="color:#ccc;">Transfer Equipment</a></li>  
+				  <li><a href="#"  style="color:#ccc;">Upload Vendor Details</a></li>  
+				  
 				</ul>
 		  </span>
 		  
