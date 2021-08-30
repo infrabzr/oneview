@@ -39,7 +39,7 @@ class FieldsupervisorController extends Controller
 					->get();
 					
 			$states = DB::table('states')->get();
-			 $id = Auth::user()->id; 
+			$id = Auth::user()->id; 
 			$sqlQuery = "SELECT e_equipment_type, COUNT(e_equipment_type) AS count FROM equipments join project_sites on project_sites.project_id = equipments.e_project_code where field_supervisor_id=$id GROUP BY e_equipment_type";
 			$piechartdata = DB::select(DB::raw($sqlQuery));
 			$equipments = "SELECT COUNT(`e_id`) AS count FROM equipments join project_sites on project_sites.project_id = equipments.e_project_code where field_supervisor_id=$id and `e_vehicle_number`='N/A'";

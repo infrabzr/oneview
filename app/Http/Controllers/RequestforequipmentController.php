@@ -136,16 +136,39 @@ class RequestforequipmentController extends Controller
     {  	
 	
 		$projects = DB::table('projects')->get();
+		$brands_equipment = DB::table('brands_equipment')->get();
+		$project_sites = DB::table('project_sites')->get();
 		$vendors = DB::table('vendors')->get(); 
 		$requests = DB::table('requestforequipments')
 					->join('projects', 'projects.project_id', '=', 'requestforequipments.r_project','left')
+					->join('project_sites', 'project_sites.site_id', '=', 'requestforequipments.r_project_site','left')
 					->join('vendors', 'vendors.vendor_id', '=', 'requestforequipments.r_vendor_id','left')
-					->select('requestforequipments.*', 'projects.*', 'vendors.*')
+					->select('requestforequipments.*', 'projects.*', 'vendors.*','project_sites.*','projects.city as pcity','projects.state as pstate')
 					->where('requestforequipments.r_id', $id)
 					->get(); 
 		 
 		$request = $requests[0]; 
-		return view('requests.requestsenior', compact('request','vendors','projects'));
+		//dd($request);
+		return view('requests.requestsenior', compact('request','vendors','projects','project_sites','brands_equipment'));
+    } 
+	public function frequestsenior($id)
+    {  	
+	
+		$projects = DB::table('projects')->get();
+		$brands_equipment = DB::table('brands_equipment')->get();
+		$project_sites = DB::table('project_sites')->get();
+		$vendors = DB::table('vendors')->get(); 
+		$requests = DB::table('requestforequipments')
+					->join('projects', 'projects.project_id', '=', 'requestforequipments.r_project','left')
+					->join('project_sites', 'project_sites.site_id', '=', 'requestforequipments.r_project_site','left')
+					->join('vendors', 'vendors.vendor_id', '=', 'requestforequipments.r_vendor_id','left')
+					->select('requestforequipments.*', 'projects.*', 'vendors.*','project_sites.*','projects.city as pcity','projects.state as pstate')
+					->where('requestforequipments.r_id', $id)
+					->get(); 
+		 
+		$request = $requests[0]; 
+		//dd($request);
+		return view('requests.frequestsenior', compact('request','vendors','projects','project_sites','brands_equipment'));
     }
 	
 	  /**
@@ -166,7 +189,12 @@ class RequestforequipmentController extends Controller
 			'rental_end_date' => $request->get('rental_end_date'),
 			'noofdays' => $request->get('noofdays'),
 			'rental_cost' => $request->get('rental_cost'),
-			'billing_cycle' => $request->get('billing_cycle'),'r_status' => 2
+			'r_vendor_id' => $request->get('r_vendor_id'),
+			'billing_cycle' => $request->get('billing_cycle'),
+			'noofdays_type' => $request->get('noofdays_type'),
+			'rental_cost_type' => $request->get('rental_cost_type'),
+			'billing_cycle_type' => $request->get('billing_cycle_type'),
+			'r_status' => 2
 		];
 
 		DB::table('requestforequipments')
@@ -174,7 +202,7 @@ class RequestforequipmentController extends Controller
 			->update($updateDetails);
        
 
-        return redirect('/requests');
+        return redirect('/requests/requestwidgetclick/1');
 
     }
 	
@@ -184,15 +212,18 @@ class RequestforequipmentController extends Controller
 	public function requestvendor($id){ 
 		$projects = DB::table('projects')->get();
 		$vendors = DB::table('vendors')->get(); 
+		$brands_equipment = DB::table('brands_equipment')->get();
 		$requests = DB::table('requestforequipments')
 					->join('projects', 'projects.project_id', '=', 'requestforequipments.r_project','left')
+					->join('project_sites', 'project_sites.site_id', '=', 'requestforequipments.r_project_site','left')
 					->join('vendors', 'vendors.vendor_id', '=', 'requestforequipments.r_vendor_id','left')
-					->select('requestforequipments.*', 'projects.*', 'vendors.*')
+					->select('requestforequipments.*', 'projects.*', 'vendors.*','project_sites.*')
 					->where('requestforequipments.r_id', $id)
 					->get(); 
 		 
 		$request = $requests[0]; 
-		return view('requests.requestvendor', compact('request','vendors','projects'));
+		//dd($request);
+		return view('requests.requestvendor', compact('request','vendors','projects','brands_equipment'));
     }
 	public function requestvendorapprove($id){ 
 		$projects = DB::table('projects')->get();
@@ -217,7 +248,8 @@ class RequestforequipmentController extends Controller
             $file_tmpname = $_FILES['r_image']['tmp_name'][$key];
             $file_name = $_FILES['r_image']['name'][$key];
    
-            $filepath = "/home/ubuntu/infraweb/public/images/".time().$file_name;
+            //$filepath = "/home/ubuntu/infraweb/public/images/".time().$file_name;
+            $filepath = "C:/xampp/htdocs/tatainfra/public/images/".time().$file_name;
   
                   move_uploaded_file($file_tmpname, $filepath);
 				  
@@ -226,33 +258,38 @@ class RequestforequipmentController extends Controller
                 }
 			 
 		 /****RC **/
-		 $d_vechile_rc_tmpname1 = $_FILES['d_vechile_rc']['tmp_name'];
+		  $d_vechile_rc_tmpname1 = $_FILES['d_vechile_rc']['tmp_name'];
         $d_vechile_rc_name = $_FILES['d_vechile_rc']['name'];
-		 $d_vechile_rc_path = "/home/ubuntu/infraweb/public/images/".time().$d_vechile_rc_name;
+		 //$d_vechile_rc_path = "/home/ubuntu/infraweb/public/images/".time().$d_vechile_rc_name;
+		 $d_vechile_rc_path = "C:/xampp/htdocs/tatainfra/public/images/".time().$d_vechile_rc_name;
 		 $d_vechile_rc = time().$d_vechile_rc_name;
-		 move_uploaded_file($d_vechile_rc_tmpname1, $d_vechile_rc_path);
+		 move_uploaded_file($d_vechile_rc_tmpname1, $d_vechile_rc_path); 
 		 /**insurance*/
-		$d_insurance_tmpname1 = $_FILES['d_vechile_rc']['tmp_name'];
-        $d_insurance_name = $_FILES['d_vechile_rc']['name'];
-		 $d_insurance_path = "/home/ubuntu/infraweb/public/images/".time().$d_insurance_name;
+		$d_insurance_tmpname1 = $_FILES['d_insurance']['tmp_name'];
+        $d_insurance_name = $_FILES['d_insurance']['name'];
+		 //$d_insurance_path = "/home/ubuntu/infraweb/public/images/".time().$d_insurance_name;
+		 $d_insurance_path = "C:/xampp/htdocs/tatainfra/public/images/".time().$d_insurance_name;
 		 $d_insurance = time().$d_insurance_name;
 		 move_uploaded_file($d_insurance_tmpname1, $d_insurance_path);
 		 /**road tax*/
-		 $d_road_tax_tmpname1 = $_FILES['d_vechile_rc']['tmp_name'];
-        $d_road_tax_name = $_FILES['d_vechile_rc']['name'];
-		 $d_road_tax_path = "/home/ubuntu/infraweb/public/images/".time().$d_road_tax_name;
+		 $d_road_tax_tmpname1 = $_FILES['d_road_tax']['tmp_name'];
+        $d_road_tax_name = $_FILES['d_road_tax']['name'];
+		// $d_road_tax_path = "/home/ubuntu/infraweb/public/images/".time().$d_road_tax_name;
+		$d_road_tax_path = "C:/xampp/htdocs/tatainfra/public/images/".time().$d_road_tax_name;
 		 $d_road_tax = time().$d_road_tax_name;
 		 move_uploaded_file($d_road_tax_tmpname1, $d_road_tax_path);
 		 /***road permit**/
-		 $d_road_permit_tmpname1 = $_FILES['d_vechile_rc']['tmp_name'];
-         $d_road_permit_name = $_FILES['d_vechile_rc']['name'];
-		 $d_road_permit_name_path = "/home/ubuntu/infraweb/public/images/".time().$d_road_permit_name;
+		 $d_road_permit_tmpname1 = $_FILES['d_road_permit']['tmp_name'];
+         $d_road_permit_name = $_FILES['d_road_permit']['name'];
+		// $d_road_permit_name_path = "/home/ubuntu/infraweb/public/images/".time().$d_road_permit_name;
+		 $d_road_permit_name_path = "C:/xampp/htdocs/tatainfra/public/images/".time().$d_road_permit_name;
 		 $d_road_permit = time().$d_road_permit_name;
 		 move_uploaded_file($d_road_permit_tmpname1, $d_road_permit_name_path);
 		 /*****fitness******/
-		  $d_fitness_tmpname1 = $_FILES['d_vechile_rc']['tmp_name'];
-         $d_fitness_name = $_FILES['d_vechile_rc']['name'];
-		 $d_fitness_name_path = "/home/ubuntu/infraweb/public/images/".time().$d_fitness_name;
+		  $d_fitness_tmpname1 = $_FILES['d_fitness']['tmp_name'];
+         $d_fitness_name = $_FILES['d_fitness']['name'];
+		// $d_fitness_name_path = "/home/ubuntu/infraweb/public/images/".time().$d_fitness_name;
+		 $d_fitness_name_path = "C:/xampp/htdocs/tatainfra/public/images/".time().$d_fitness_name;
 		 $d_fitness = time().$d_fitness_name;
 		 move_uploaded_file($d_fitness_tmpname1, $d_fitness_name_path);
 		 /**********/
@@ -269,8 +306,11 @@ class RequestforequipmentController extends Controller
 			"permit_start_date"=>$request->input('permit_start_date'),
 			"fitness_end_date"=>$request->input('fitness_end_date'),
 			"fitness_start_date"=>$request->input('fitness_start_date'),
+			"e_vehicle_number"=>$request->input('e_vehicle_number'),
+			"e_shift"=>$request->input('e_shift'),
+			"e_expected_mileage"=>$request->input('e_expected_mileage'),
 			"r_images"=>json_encode($imagename),
-			'r_status' => 3,
+			'r_status' => 5,
 			"d_vechile_rc"=>$d_vechile_rc,
 		"d_insurance"=>$d_insurance,
 		"d_road_tax"=>$d_road_tax,
@@ -282,10 +322,101 @@ class RequestforequipmentController extends Controller
 			->where('r_id', $request->get('r_id'))
 			->update($updateDetails);
 
-        return redirect('/requests');
+        return redirect('home/vendor_requestequipment/1');
 
     }
 	
+	public function requestpending($id){ 
+		$projects = DB::table('projects')->get();
+		$vendors = DB::table('vendors')->get(); 
+		$requests = DB::table('requestforequipments')
+					->join('projects', 'projects.project_id', '=', 'requestforequipments.r_project','left')
+					->join('project_sites', 'project_sites.site_id', '=', 'requestforequipments.r_project_site','left')
+					->join('vendors', 'vendors.vendor_id', '=', 'requestforequipments.r_vendor_id','left')
+					->select('requestforequipments.*', 'projects.*', 'vendors.*','project_sites.*')
+					->where('requestforequipments.r_id', $id)
+					->get(); 
+		 
+		$request = $requests[0]; 
+		//dd($request);
+		return view('requests.requestpending', compact('request','vendors','projects'));
+    }
+	public function frequestpending($id){ 
+		$projects = DB::table('projects')->get();
+		$vendors = DB::table('vendors')->get(); 
+		$requests = DB::table('requestforequipments')
+					->join('projects', 'projects.project_id', '=', 'requestforequipments.r_project','left')
+					->join('project_sites', 'project_sites.site_id', '=', 'requestforequipments.r_project_site','left')
+					->join('vendors', 'vendors.vendor_id', '=', 'requestforequipments.r_vendor_id','left')
+					->select('requestforequipments.*', 'projects.*', 'vendors.*','project_sites.*')
+					->where('requestforequipments.r_id', $id)
+					->get(); 
+		 
+		$request = $requests[0]; 
+		//dd($request);
+		return view('requests.frequestpending', compact('request','vendors','projects'));
+    }
+	public function document_verification($id){ 
+		$projects = DB::table('projects')->get();
+		$vendors = DB::table('vendors')->get(); 
+		$brands_equipment = DB::table('brands_equipment')->get();
+		$requests = DB::table('requestforequipments')
+					->join('projects', 'projects.project_id', '=', 'requestforequipments.r_project','left')
+					->join('project_sites', 'project_sites.site_id', '=', 'requestforequipments.r_project_site','left')
+					->join('vendors', 'vendors.vendor_id', '=', 'requestforequipments.r_vendor_id','left')
+					->select('requestforequipments.*', 'projects.*', 'vendors.*','project_sites.*')
+					->where('requestforequipments.r_id', $id)
+					->get(); 
+		 
+		$request = $requests[0];
+//dd($request);		
+		return view('requests.document_verification', compact('request','vendors','projects','brands_equipment'));
+    }
+	public function fdocument_verification($id){ 
+		$projects = DB::table('projects')->get();
+		$vendors = DB::table('vendors')->get(); 
+		$brands_equipment = DB::table('brands_equipment')->get();
+		$requests = DB::table('requestforequipments')
+					->join('projects', 'projects.project_id', '=', 'requestforequipments.r_project','left')
+					->join('project_sites', 'project_sites.site_id', '=', 'requestforequipments.r_project_site','left')
+					->join('vendors', 'vendors.vendor_id', '=', 'requestforequipments.r_vendor_id','left')
+					->select('requestforequipments.*', 'projects.*', 'vendors.*','project_sites.*')
+					->where('requestforequipments.r_id', $id)
+					->get(); 
+		 
+		$request = $requests[0];
+//dd($request);		
+		return view('requests.fdocument_verification', compact('request','vendors','projects','brands_equipment'));
+    }
+	public function vpendingatclientdetails($id){ 
+		$projects = DB::table('projects')->get();
+		$vendors = DB::table('vendors')->get(); 
+		$brands_equipment = DB::table('brands_equipment')->get();
+		$requests = DB::table('requestforequipments')
+					->join('projects', 'projects.project_id', '=', 'requestforequipments.r_project','left')
+					->join('project_sites', 'project_sites.site_id', '=', 'requestforequipments.r_project_site','left')
+					->join('vendors', 'vendors.vendor_id', '=', 'requestforequipments.r_vendor_id','left')
+					->select('requestforequipments.*', 'projects.*', 'vendors.*','project_sites.*')
+					->where('requestforequipments.r_id', $id)
+					->get(); 
+		 
+		$request = $requests[0];
+//dd($request);		
+		return view('requests.vpendingatclientdetails', compact('request','vendors','projects','brands_equipment'));
+    }
+	public function approve_contract($id){ 
+		$projects = DB::table('projects')->get();
+		$vendors = DB::table('vendors')->get(); 
+		$requests = DB::table('requestforequipments')
+					->join('projects', 'projects.project_id', '=', 'requestforequipments.r_project','left')
+					->join('vendors', 'vendors.vendor_id', '=', 'requestforequipments.r_vendor_id','left')
+					->select('requestforequipments.*', 'projects.*', 'vendors.*')
+					->where('requestforequipments.r_id', $id)
+					->get(); 
+		 
+		$request = $requests[0]; 
+		return view('requests.approve_contract', compact('request','vendors','projects'));
+    }
 	public function requestsenior_two($id){ 
 		$projects = DB::table('projects')->get();
 		$vendors = DB::table('vendors')->get(); 
@@ -298,6 +429,19 @@ class RequestforequipmentController extends Controller
 		 
 		$request = $requests[0]; 
 		return view('requests.requestsenior_two', compact('request','vendors','projects'));
+    }
+	public function rejectedrequests_vdetails($id){ 
+		$projects = DB::table('projects')->get();
+		$vendors = DB::table('vendors')->get(); 
+		$requests = DB::table('requestforequipments')
+					->join('projects', 'projects.project_id', '=', 'requestforequipments.r_project','left')
+					->join('vendors', 'vendors.vendor_id', '=', 'requestforequipments.r_vendor_id','left')
+					->select('requestforequipments.*', 'projects.*', 'vendors.*')
+					->where('requestforequipments.r_id', $id)
+					->get(); 
+		 
+		$request = $requests[0]; 
+		return view('requests.rejectedrequests_vdetails', compact('request','vendors','projects'));
     }
 	
 	public function addsenior_tworequest(Request $request){
@@ -327,12 +471,12 @@ class RequestforequipmentController extends Controller
     {
 		
 		$typevehicle = "Vehicle";
-		$typevehiclecount = \DB::table('requestforequipments')->where('type', $typevehicle)
+		$typevehiclecount = \DB::table('requestforequipments')->where('type', $typevehicle)->where('r_status', $status)
 						->get();
 		$typevehicle_count = $typevehiclecount->count();
 
 		$typeequipment = "Equipment";
-		$typeequipmentcount = \DB::table('requestforequipments')->where('type', $typeequipment)
+		$typeequipmentcount = \DB::table('requestforequipments')->where('type', $typeequipment)->where('r_status', $status)
 						->get();
 		$typeequipment_count = $typeequipmentcount->count();
 
@@ -358,6 +502,17 @@ class RequestforequipmentController extends Controller
 		$approved_request = \DB::table('requestforequipments')->where('r_status', $sr_srstatus)
 						->get();
 		$approved_request_count = $approved_request->count();
+		
+		$sr_srstatus = "6";
+		$approved_request = \DB::table('requestforequipments')->where('r_status', $sr_srstatus)
+						->get();
+		$rejected_request_count = $approved_request->count();
+		
+		
+		$sr_srstatus = "5";
+		$document_verification = \DB::table('requestforequipments')->where('r_status', $sr_srstatus)
+						->get();
+		$document_verification_request_count = $document_verification->count();
 		 
 		$total_request = DB::table('requestforequipments')
 							->get();
@@ -369,12 +524,15 @@ class RequestforequipmentController extends Controller
 		
 		$requests = DB::table('requestforequipments')
 					->join('projects', 'projects.project_id', '=', 'requestforequipments.r_project')
-					->select('requestforequipments.created_at as created','requestforequipments.*', 'projects.*')
+					->join('project_sites', 'project_sites.site_id', '=', 'requestforequipments.r_project_site','left')
+					->select('requestforequipments.created_at as created','requestforequipments.*', 'projects.*','project_sites.*')
 					->where('requestforequipments.r_status', $status)
-					->get(); 		 
+					->orderBy('r_id', 'DESC')
+					->get(); 	
+//dd($requests);					
 		$states = DB::table('states')->get();
 		$projects = DB::table('projects')->get();  
-         return view('requestequipment',compact('requests','projects','newrequest_count','pending_vendor_count','approve_vendor_count','approved_request_count','total_request_n','states','typevehicle_count','typeequipment_count'));
+         return view('requestequipment',compact('requests','projects','newrequest_count','pending_vendor_count','approve_vendor_count','approved_request_count','total_request_n','states','typevehicle_count','typeequipment_count','rejected_request_count','document_verification_request_count'));
 		  
     }
 	

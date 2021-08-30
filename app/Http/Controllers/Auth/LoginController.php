@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use DB;
+use Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -44,6 +45,25 @@ class LoginController extends Controller
 					return '/home/vendor';	 
 				} elseif($role_id == 6){
 					return '/home/finance';	 
+				} elseif($role_id == 7){
+					$id = Auth::user()->id; 
+					$checkequipmentcount =DB::table('vendorequipments')
+											->where("ve_vendor_id",$id)
+											->get()
+											->count();
+					if($checkequipmentcount){
+						return '/home/vendoradmin';
+					}else{
+						return '/vendorequipment';
+					}
+
+						 
+				} elseif($role_id == 8){
+					return '/home/operator';	 
+				} elseif($role_id == 9){
+					return '/home/technician';	 
+				} elseif($role_id == 10){
+					return '/home/chiefengineer';	 
 				} 
     }
 	 

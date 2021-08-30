@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/vendorequipment/userlist';
 
     /**
      * Create a new controller instance.
@@ -50,9 +50,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+           /*  'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'], */
         ]);
     }
 
@@ -65,9 +65,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $data['user_name'],
+            'role' => $data['role_type'],
+            'admin_user_id' => $data['ve_vendor_id'],
+            'primary_mobile' => $data['user_phone'],
+            'email' => $data['user_email'],
+            'password' => Hash::make($data['user_password']),
         ]);
+		
     }
 }
